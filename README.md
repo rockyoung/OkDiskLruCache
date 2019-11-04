@@ -1,5 +1,5 @@
-OkDiskLruCacheKt
-================
+OkDiskLruCache
+==============
 [![GitHub license](https://img.shields.io/github/license/rockyoung/OkDiskLruCache)](https://github.com/rockyoung/OkDiskLruCache/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/rockyoung/OkDiskLruCache.svg?branch=master)](https://travis-ci.org/rockyoung/OkDiskLruCache)
 [![Download](https://api.bintray.com/packages/imrock/x-libs/okdisklrucache/images/download.svg) ](https://bintray.com/imrock/x-libs/okdisklrucache/_latestVersion)
