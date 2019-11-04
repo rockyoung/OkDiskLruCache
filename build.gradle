@@ -1,9 +1,14 @@
 plugins {
-  id 'org.jetbrains.kotlin.jvm' version '1.3.41'
+  id "org.jetbrains.kotlin.jvm" version "1.3.50"
+  id "com.jfrog.bintray" version "1.8.4"
 }
 
-group 'com.imcok.xlib'
-version '1.0.0'
+apply plugin: 'maven-publish'
+
+def versionName = "1.0.0"
+
+group "com.imrock.xlib"
+version versionName
 
 repositories {
   mavenCentral()
@@ -21,4 +26,64 @@ compileKotlin {
 }
 compileTestKotlin {
   kotlinOptions.jvmTarget = "1.8"
+}
+
+sourceSets {
+  main.java.srcDirs += 'src/main/kotlin'
+}
+
+task sourcesJar(type: Jar, dependsOn: project.classes) {
+  from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: project.javadoc) {
+  from javadoc.destinationDir
+}
+
+artifacts {
+  archives sourcesJar, javadocJar
+}
+
+def webUrl = 'https://github.com/rockyoung/OkDiskLruCache'
+def gitUrl = 'https://github.com/rockyoung/OkDiskLruCache.git'
+
+/** 'group:libName:version' **/
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties')
+    .newDataInputStream())
+bintray {
+  user = properties.getProperty("bintray.user")
+  key = properties.getProperty("bintray.apikey")
+  publications = ['mavenJava']
+  pkg {
+    repo = "x-libs"
+    name = rootProject.name
+    licenses = ["Apache-2.0"]
+    websiteUrl = webUrl
+    vcsUrl = gitUrl
+    publish = true
+
+    version {
+      name = versionName
+      released  = new Date()
+      vcsTag = "v${versionName}"
+    }
+  }
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId project.bintray.pkg.name
+      from components.java
+
+      artifact sourcesJar {
+        classifier = 'sources'
+      }
+      artifact javadocJar {
+        classifier = 'javadoc'
+      }
+    }
+  }
 }
