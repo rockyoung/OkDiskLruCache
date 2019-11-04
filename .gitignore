@@ -15,7 +15,7 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.nar
 *.ear
@@ -83,7 +83,7 @@ gen
 # .idea/*.iml
 # .idea/modules
 # *.iml
-# *.ipr
+ *.ipr
 
 # CMake
 cmake-build-*/
@@ -243,3 +243,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+.env
