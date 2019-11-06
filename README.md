@@ -10,7 +10,7 @@ Kotlin and using [Okio](https://github.com/square/okio) like what
 implementation, unfortunately as the mentioned word `internal`, you can not use it directly. so here
 we are, also support file get in `Snapshot`.
 
-##Download
+## Download
 Maven:
 ```xml
 <dependency>
@@ -20,7 +20,7 @@ Maven:
   <type>pom</type>
 </dependency>
 ```
-Or Gradle:
+or Gradle:
 ```groovy
 dependencies {
   implementation 'com.imrock.xlib:okdisklrucache:1.0.0'
